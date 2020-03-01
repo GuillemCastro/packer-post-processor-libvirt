@@ -33,8 +33,7 @@
   "post-processors": [
       {
           "type": "libvirt",
-          "socket_type": "unix",
-          "connection_uri": "/var/run/libvirt/libvirt-sock"
+          "name": "test-libvirt"
       }
   ]
 }
