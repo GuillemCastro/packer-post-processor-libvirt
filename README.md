@@ -1,4 +1,4 @@
-# packer-post-processor-libvirt
+# packer-post-processor-libvirt ![Go](https://github.com/GuillemCastro/packer-post-processor-libvirt/workflows/Go/badge.svg?branch=master)
 
 A Packer post-processor that automatically imports your built image to your preferred virtualization platform using libvirt.
 
