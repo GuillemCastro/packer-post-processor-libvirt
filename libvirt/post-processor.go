@@ -91,6 +91,17 @@ func (p *PostProcessor) PostProcess(ctx context.Context, ui packer.Ui, artifact 
 					Target:  &libvirtxml.DomainDiskTarget{Dev: "hda", Bus: "ide"},
 					Alias:   &libvirtxml.DomainAlias{Name: "ide0-0-0"},
 					Address: &libvirtxml.DomainAddress{Drive: &libvirtxml.DomainAddressDrive{Controller: &drive, Bus: &drive, Target: &drive, Unit: &drive}},
+					Driver:  &libvirtxml.DomainDiskDriver{Name: "qemu", Type: "qcow2"},
+				},
+			},
+			Graphics: []libvirtxml.DomainGraphic{
+				{
+					Spice: &libvirtxml.DomainGraphicSpice{Port: 5900, AutoPort: "yes", Listen: "127.0.0.1"},
+				},
+			},
+			Interfaces: []libvirtxml.DomainInterface{
+				{
+					Model: &libvirtxml.DomainInterfaceModel{Type: "virtio"},
 				},
 			},
 		},
