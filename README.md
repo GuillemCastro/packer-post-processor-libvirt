@@ -8,6 +8,47 @@ A Packer post-processor that automatically imports your built image to your pref
 - [x] Configure memory and number of cores
 - [ ] Configure devices like network interfaces and graphic adapters
 
+## Installation and usage
+
+For installing the post-processor, just execute,
+
+```bash
+go get -v github.com/GuillemCastro/packer-post-processor-libvirt
+```
+
+Then in `~/.packerconfig` add the libvirt post-processor. It should look like this,
+
+```json
+{
+    "post-processors": {
+        "libvirt": "packer-post-processor-libvirt"
+    }
+}
+```
+
+Then you can add it to your image configuration for packer,
+
+```json
+{
+  "builders": [
+    {
+      "type": "qemu", //right now only qemu is supported
+      "format": "qcow2", //with qcow2 images
+      "accelerator": "kvm", //and kvm as the accelerator
+      "vm_name": "ubuntu1804", //this will be the name of your VM
+    }
+  ],
+  "post-processors": [
+      {
+          "type": "libvirt",
+          "connection_uri": "qemu:///system", // QEMU connection URI (optional) by default "qemu:///system"
+          "memory": 1024, // Ammount of RAM (optional) by default 1024MB
+          "cores": 1, // Ammount of CPU cores (optional) by default 1
+      }
+  ]
+}
+```
+
 ## License
 
 ```
